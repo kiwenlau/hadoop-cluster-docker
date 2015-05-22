@@ -3,10 +3,10 @@
 # run N slave containers
 N=$1
 
-# the defaut slave number is 2
+# the defaut node number is 3
 if [ $# = 0 ]
 then
-	N=2
+	N=3
 fi
 	
 
