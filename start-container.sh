@@ -13,4 +13,4 @@ sudo docker run -d -t --dns 127.0.0.1 -P --name slave1 -h slave1.kiwenlau.com -e
 sudo docker run -d -t --dns 127.0.0.1 -P --name slave2 -h slave2.kiwenlau.com -e JOIN_IP=$FIRST_IP kiwenlau/hadoop-slave:0.1.0
 
 # create a new Bash session in the master container
-docker exec -it master bash
+sudo docker exec -it master bash
