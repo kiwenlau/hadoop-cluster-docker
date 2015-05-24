@@ -46,19 +46,19 @@ alvinhenrick/hadoop-mutinode      4.331GB     镜像太大，构建时间太慢�
 下面两个表是alvinhenrick/hadoop-mutinode项目与我的kiwenlau/hadoop-cluster-docker项目的参数对比
 
 ```
-镜像名称	                  构建时间	 镜像层数	 镜像大小
-alvinhenrick/serf	        258.213s    21	     239.4MB
-alvinhenrick/hadoop-base	 2236.055s   58	     4.328GB
-alvinhenrick/hadoop-dn	   51.959s     74	     4.331GB
-alvinhenrick/hadoop-nn-dn    49.548s     84         4.331GB
+镜像名称	                  构建时间	   镜像层数	  镜像大小
+alvinhenrick/serf	         258.213s    21	        239.4MB
+alvinhenrick/hadoop-base	  2236.055s   58	        4.328GB
+alvinhenrick/hadoop-dn	    51.959s     74	        4.331GB
+alvinhenrick/hadoop-nn-dn  49.548s     84         4.331GB
 ```
 
 ```
-镜像名称	                  构建时间	 镜像层数	 镜像大小
-kiwenlau/serf-dnsmasq        509.46s     8	      206.6 MB
-kiwenlau/hadoop-base	     400.29s	 7	      775.4 MB
-kiwenlau/hadoop-master       5.41s       9	      775.4 MB
-kiwenlau/hadoop-slave	    2.41s	   8	      775.4 MB
+镜像名称	                  构建时间	   镜像层数	 镜像大小
+kiwenlau/serf-dnsmasq      509.46s     8	        206.6 MB
+kiwenlau/hadoop-base	      400.29s	    7	        775.4 MB
+kiwenlau/hadoop-master     5.41s       9	        775.4 MB
+kiwenlau/hadoop-slave	     2.41s	      8	        775.4 MB
 ```
 
 
@@ -77,7 +77,7 @@ kiwenlau/hadoop-slave	    2.41s	   8	      775.4 MB
 - 内核版本: 3.13.0-32-generic
 - Docker版本：1.5.0 和1.6.2
 
-###小伙伴们，硬盘不够，内存不够，尤其是内核版本过低会导致运行失败...
+####小伙伴们，硬盘不够，内存不够，尤其是内核版本过低会导致运行失败...
 
 #二. 镜像简介
 ###本项目一共开发了4个镜像
@@ -116,9 +116,9 @@ PS
 
 另外，我还编译了64位的hadoop 2.5.2, 2.6.0, 2.7.0, 其下载地址如下：
 - hadoop-2.3.0: [http://pan.baidu.com/s/1sjFRaFz](http://pan.baidu.com/s/1sjFRaFz) 
-- hadoop-2.5.2: 
-- hadoop-2.6.0: 
-- hadoop-2.7.0: 
+- hadoop-2.5.2:[ http://pan.baidu.com/s/1jGw24aa](http://pan.baidu.com/s/1jGw24aa)
+- hadoop-2.6.0:[http://pan.baidu.com/s/1eQgvF2M](http://pan.baidu.com/s/1eQgvF2M)
+- hadoop-2.7.0:[ http://pan.baidu.com/s/1c0HD0Nu]( http://pan.baidu.com/s/1c0HD0Nu)
 
 ###hadoop-master镜像
 - 基于hadoop-base镜像
