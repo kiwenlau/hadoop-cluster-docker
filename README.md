@@ -9,22 +9,14 @@
 
 #一. 项目简介
 
-GitHub地址：[https://github.com/kiwenlau/hadoop-cluster-docker](https://github.com/kiwenlau/hadoop-cluster-docker)
-
-博客地址：http://www.cnblogs.com/kiwenlau/p/4524607.html
-
-```
-作者：KiwenLau 
-Email: kwenlau@gmail.com 或者 kiwenlau@126.com
-2015年5月23日
-```
+博客地址：http://kiwenlau.blogspot.jp/2015/05/dockerhadoop_24.html
 
 直接用机器搭建Hadoop集群是一个相当痛苦的过程，尤其对初学者来说。他们还没开始跑wordcount，可能就被这个问题折腾的体无完肤了....而且也不是每个人都有好几台机器对吧...你可以尝试用多个虚拟机搭建...前提是你有个性能杠杠的机器...
 
 我的目标是将Hadoop集群运行在Docker容器中，使Hadoop开发者能够快速便捷地在本机搭建多节点的Hadoop集群。其实这个想法已经有了不少实现，但是都不是很理想，他们或者镜像太大，或者使用太慢，或者使用了第三方工具使得使用起来过于复杂...下表为一些已知的Hadoop on Docker项目以及其存在的问题。
 
 ```
-项目	                           镜像大小	 问题
+项目	                            镜像大小	  问题
 sequenceiq/hadoop-docker:latest   1.491GB     镜像太大，只支持单个节点
 sequenceiq/hadoop-docker:2.7.0    1.76 GB	
 sequenceiq/hadoop-docker:2.60     1.624GB	
