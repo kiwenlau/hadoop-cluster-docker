@@ -39,10 +39,10 @@ alvinhenrick/hadoop-mutinode      4.331GB     镜像太大，构建时间太慢�
 
 ```
 镜像名称	                  构建时间	   镜像层数	  镜像大小
-alvinhenrick/serf	         258.213s    21	        239.4MB
-alvinhenrick/hadoop-base	  2236.055s   58	        4.328GB
-alvinhenrick/hadoop-dn	    51.959s     74	        4.331GB
-alvinhenrick/hadoop-nn-dn  49.548s     84         4.331GB
+alvinhenrick/serf	        258.213s      21	      239.4MB
+alvinhenrick/hadoop-base	 2236.055s     58	      4.328GB
+alvinhenrick/hadoop-dn	   51.959s       74	      4.331GB
+alvinhenrick/hadoop-nn-dn    49.548s       84          4.331GB
 ```
 
 ```
