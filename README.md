@@ -46,11 +46,11 @@ alvinhenrick/hadoop-nn-dn    49.548s      84          4.331GB
 ```
 
 ```
-镜像名称	                  构建时间	   镜像层数	 镜像大小
-kiwenlau/serf-dnsmasq        509.46s      8	       206.6 MB
-kiwenlau/hadoop-base	     400.29s	  7	       775.4 MB
-kiwenlau/hadoop-master       5.41s        9	       775.4 MB
-kiwenlau/hadoop-slave	     2.41s	      8	        775.4 MB
+镜像名称	                  构建时间	   镜像层数	   镜像大小
+kiwenlau/serf-dnsmasq        509.46s      8	         206.6 MB
+kiwenlau/hadoop-base	     400.29s	  7	         775.4 MB
+kiwenlau/hadoop-master       5.41s        9	         775.4 MB
+kiwenlau/hadoop-slave	     2.41s	      8	         775.4 MB
 ```
 
 
