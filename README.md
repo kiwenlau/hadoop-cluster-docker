@@ -9,7 +9,7 @@
 
 #一. 项目简介
 
-博客地址：http://kiwenlau.blogspot.jp/2015/05/dockerhadoop_24.html
+博客地址：[DockerOne](http://dockone.io/article/395),[blogspot](http://kiwenlau.blogspot.jp/2015/05/dockerhadoop_24.html), [博客园](http://www.cnblogs.com/kiwenlau/p/4524607.html)
 
 直接用机器搭建Hadoop集群是一个相当痛苦的过程，尤其对初学者来说。他们还没开始跑wordcount，可能就被这个问题折腾的体无完肤了....而且也不是每个人都有好几台机器对吧...你可以尝试用多个虚拟机搭建...前提是你有个性能杠杠的机器...
 
