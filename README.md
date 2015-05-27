@@ -7,7 +7,7 @@
 ```
 
 
-#一. 项目简介
+##一. 项目简介
 
 博客地址：[DockerOne](http://dockone.io/article/395), [Blogger](http://kiwenlau.blogspot.jp/2015/05/dockerhadoop_24.html), [博客园](http://www.cnblogs.com/kiwenlau/p/4524607.html)
 
@@ -29,11 +29,7 @@ alvinhenrick/hadoop-mutinode      4.331GB     镜像太大，构建时间太慢�
 ```
 
 
-我的项目参考了alvinhenrick/hadoop-mutinode项目，不过我做了大量的优化和重构。alvinhenrick/hadoop-mutinode项目的Github主页以及作者所写的博客地址如下：
-
-[https://github.com/alvinhenrick/hadoop-mutinode](https://github.com/alvinhenrick/hadoop-mutinode)
-
-[http://alvinhenrick.com/2014/07/16/hadoop-yarn-multinode-cluster-with-docker/](http://alvinhenrick.com/2014/07/16/hadoop-yarn-multinode-cluster-with-docker/)
+我的项目参考了alvinhenrick/hadoop-mutinode项目，不过我做了大量的优化和重构。alvinhenrick/hadoop-mutinode项目的Github主页以及作者所写的博客地址：[GitHub](https://github.com/alvinhenrick/hadoop-mutinode)， [博客](http://alvinhenrick.com/2014/07/16/hadoop-yarn-multinode-cluster-with-docker/)
 
 下面两个表是alvinhenrick/hadoop-mutinode项目与我的kiwenlau/hadoop-cluster-docker项目的参数对比
 
@@ -59,72 +55,65 @@ kiwenlau/hadoop-slave	     2.41s	      8	         775.4 MB
 - 更快的构造时间
 - 更少的镜像层数
 
-###更快更方便地改变Hadoop集群节点数目
+#####更快更方便地改变Hadoop集群节点数目
 另外，alvinhenrick/hadoop-mutinode项目增加节点时需要手动修改Hadoop配置文件然后重新构建hadoop-nn-dn镜像,然后修改容器启动脚本，才能实现增加节点的功能。而我通过shell脚本实现自动话，不到1分钟可以重新构建hadoop-master镜像，然后立即运行！！！本项目默认启动3个节点的Hadoop集群，支持任意节点数的hadoop集群。
 
 另外，启动hadoop, 运行wordcount以及重新构建镜像都采用了shell脚本实现自动化。这样使得整个项目的使用以及开发都变得非常方便快捷:)
 
-###开发测试环境
+#####开发测试环境
 - 操作系统：ubuntu 14.04 和 ubuntu 12.04
 - 内核版本: 3.13.0-32-generic
 - Docker版本：1.5.0 和1.6.2
 
-####小伙伴们，硬盘不够，内存不够，尤其是内核版本过低会导致运行失败...
+#####小伙伴们，硬盘不够，内存不够，尤其是内核版本过低会导致运行失败...
 
-#二. 镜像简介
-###本项目一共开发了4个镜像
+##二. 镜像简介
+
+######本项目一共开发了4个镜像
 - serf-dnsmasq
 - hadoop-base
 - hadoop-master
 - hadoop-slave
 
-###serf-dnsmasq镜像
+#####serf-dnsmasq镜像
 
 - 基于ubuntu:15.04 (选它是因为它最小，不是因为它最新...)
-
 - 安装serf: serf是一个分布式的机器节点管理工具。它可以动态地发现所有hadoop集群节点。
-
 - 安装dnsmasq: dnsmasq作为轻量级的dns服务器。它可以为hadoop集群提供域名解析服务。
 
-容器启动时，master节点的IP会传给所有slave节点。serf会在container启动后立即启动。slave节点上的serf agent会马上发现master节点（master IP它们都知道嘛），master节点就马上发现了所有slave节点。然后它们之间通过互相交换信息，所有节点就能知道其他所有节点的存在了！(Everyone will know Everyone). serf发现新的节点时，就会重新配置dnsmasq,然后重启dnsmasq. 所以dnsmasq就能够解析集群的所有节点的域名啦。这个过程随着节点的增加会耗时更久，因此，若配置的Hadoop节点比较多，则在启动容器后需要测试serf是否发现了所有节点，dns是否能够解析所有节点域名。稍等片刻才能启动Hadoop。这个解决方案是由SequenceIQ公司提出的，该公司专注于将Hadoop运行在Docker中。参考：
+容器启动时，master节点的IP会传给所有slave节点。serf会在container启动后立即启动。slave节点上的serf agent会马上发现master节点（master IP它们都知道嘛），master节点就马上发现了所有slave节点。然后它们之间通过互相交换信息，所有节点就能知道其他所有节点的存在了！(Everyone will know Everyone). serf发现新的节点时，就会重新配置dnsmasq,然后重启dnsmasq. 所以dnsmasq就能够解析集群的所有节点的域名啦。这个过程随着节点的增加会耗时更久，因此，若配置的Hadoop节点比较多，则在启动容器后需要测试serf是否发现了所有节点，dns是否能够解析所有节点域名。稍等片刻才能启动Hadoop。这个解决方案是由SequenceIQ公司提出的，该公司专注于将Hadoop运行在Docker中。参考：[Docker-based Hadoop Provisioning](http://www.slideshare.net/JanosMatyas/docker-based-hadoop-provisioning)
 
-[http://www.slideshare.net/JanosMatyas/docker-based-hadoop-provisioning](http://www.slideshare.net/JanosMatyas/docker-based-hadoop-provisioning)
-
-###hadoop-base镜像 
+#####hadoop-base镜像 
 - 基于serf-dnsmasq镜像
 - 安装JDK(openjdk)
 - 安装openssh-server, 配置无密码ssh
 - 安装vim：介样就可以愉快地在容器中敲代码了:)
 - 安装Hadoop 2.3.0: 安装编译过的hadoop （2.5.2， 2.6.0， 2.7.0 都比2.3.0大，所以我懒得升级了）
 
-PS
-编译Hadoop的步骤请参考我的博客：
-
-[http://www.cnblogs.com/kiwenlau/p/4227204.html](http://www.cnblogs.com/kiwenlau/p/4227204.html)
+编译Hadoop的步骤请参考我的博客：[博客园](http://www.cnblogs.com/kiwenlau/p/4227204.html)，[Blogger](http://kiwenlau.blogspot.jp/2015/01/hadoop-230-ubuntu-1404.html)
 
 如果需要重新开发我的hadoop-base, 需要下载编译过的hadoop-2.3.0安装包，放到hadoop-cluster-docker/hadoop-base/files目录内。我编译的64位hadoop-2.3.0下载地址：
 
-[http://pan.baidu.com/s/1sjFRaFz](http://pan.baidu.com/s/1sjFRaFz)
+[hadoop-2.3.0](http://pan.baidu.com/s/1sjFRaFz)
 
 另外，我还编译了64位的hadoop 2.5.2, 2.6.0, 2.7.0, 其下载地址如下：
-- hadoop-2.3.0: [http://pan.baidu.com/s/1sjFRaFz](http://pan.baidu.com/s/1sjFRaFz) 
-- hadoop-2.5.2:[ http://pan.baidu.com/s/1jGw24aa](http://pan.baidu.com/s/1jGw24aa)
-- hadoop-2.6.0:[http://pan.baidu.com/s/1eQgvF2M](http://pan.baidu.com/s/1eQgvF2M)
-- hadoop-2.7.0:[ http://pan.baidu.com/s/1c0HD0Nu]( http://pan.baidu.com/s/1c0HD0Nu)
+- [hadoop-2.3.0](http://pan.baidu.com/s/1sjFRaFz) 
+- [hadoop-2.5.2](http://pan.baidu.com/s/1jGw24aa)
+- [hadoop-2.6.0](http://pan.baidu.com/s/1eQgvF2M)
+- [hadoop-2.7.0]( http://pan.baidu.com/s/1c0HD0Nu)
 
-###hadoop-master镜像
+#####hadoop-master镜像
 - 基于hadoop-base镜像
 - 配置hadoop的master节点
 - 格式化namenode
 
 这一步需要配置slaves文件，而slaves文件需要列出所有节点的域名或者IP。因此，Hadoop节点数目不同时，slaves文件自然也不一样。因此，更改Hadoop集群节点数目时，需要修改slaves文件然后重新构建hadoop-master镜像。我编写了一个resize-cluster.sh脚本自动化这一过程。仅需给定节点数目作为脚本参数就可以轻松实现Hadoop集群节点数目的更改。由于hadoop-master镜像仅仅做一些配置工作，也无需下载任何文件，整个过程非常快，1分钟就足够了。
 
-
-###hadoop-slave镜像
+#####hadoop-slave镜像
 - 基于hadoop-base镜像
 - 配置hadoop的slave节点
 
-###镜像大小分析
+#####镜像大小分析
 
 下表为sudo docker images的运行结果
 
@@ -162,10 +151,10 @@ b68f8c8d2140    3 weeks ago         /bin/sh -c #(nop) ADD file:d90f7467c470bfa9a
 - 因此，我所开发的hadoop镜像以及接近最小，优化空间已经很小了
 
 
-#三. 3节点Hadoop集群搭建步骤
+##三. 3节点Hadoop集群搭建步骤
 
 
-###1. 拉取镜像
+#####1. 拉取镜像
 
 ```sh
 sudo docker pull index.alauda.cn/kiwenlau/hadoop-master:0.1.0
@@ -192,7 +181,7 @@ index.alauda.cn/kiwenlau/serf-dnsmasq     0.1.0    09ed89c24ee8    17 hours ago 
 - hadoop-base镜像是基于serf-dnsmasq镜像的，hadoop-slave镜像和hadoop-master镜像都是基于hadoop-base镜像
 - 所以其实4个镜像一共也就777.4MB:)
 
-###2. 修改镜像tag
+#####2. 修改镜像tag
 
 ```sh
 sudo docker tag d63869855c03 kiwenlau/hadoop-slave:0.1.0
@@ -224,7 +213,7 @@ index.alauda.cn/kiwenlau/serf-dnsmasq    0.1.0    09ed89c24ee8    17 hours ago  
 - 之所以要修改镜像，是因为我默认是将镜像上传到Dockerhub, 因此Dokerfile以及shell脚本中得镜像名称都是没有alauada前缀的，sorry for this....不过改tag还是很快滴
 - 若直接下载我在DockerHub中的镜像，自然就不需要修改tag...不过Alauda镜像下载速度很快的哈~
 
-###3.下载源代码
+#####3.下载源代码
 
 ```sh
 git clone https://github.com/kiwenlau/hadoop-cluster-docker
@@ -237,7 +226,7 @@ git clone http://git.oschina.net/kiwenlau/hadoop-cluster-docker
 ```
 
 
-###4. 运行容器
+#####4. 运行容器
 
 ```sh
  cd hadoop-cluster-docker
@@ -271,7 +260,7 @@ hdfs  run-wordcount.sh	serf_log  start-hadoop.sh  start-ssh-serf.sh
 - run-wordcount.sh是运行wordcount的shell脚本，可以测试镜像是否正常工作
 
 
-###5.测试容器是否正常启动(此时已进入master容器)
+#####5.测试容器是否正常启动(此时已进入master容器)
 
 *查看hadoop集群成员*
 
@@ -309,13 +298,13 @@ applicable law.
 root@slave2:~# 
 ```
 
-#####*退出slave2*
+*退出slave2*
 
 ```sh
 exit
 ```
 
-#####*运行结果*
+*运行结果*
 ```
 logout
 Connection to slave2.kiwenlau.com closed.
@@ -325,7 +314,7 @@ Connection to slave2.kiwenlau.com closed.
 
 - 测试成功后，就可以开启Hadoop集群了！其实你也可以不进行测试，开启容器后耐心等待一分钟即可！
 
-###6. 开启hadoop
+#####6. 开启hadoop
 
 ```sh
 ./start-hadoop.sh
@@ -335,7 +324,7 @@ Connection to slave2.kiwenlau.com closed.
 - 运行结果太多，忽略....
 - hadoop的启动速度取决于机器性能....
 
-###7. 运行wordcount
+#####7. 运行wordcount
 
 ```sh
 ./run-wordcount.sh
@@ -359,20 +348,20 @@ Hello	2
 - wordcount的执行速度取决于机器性能....
 
 
-#四. N节点Hadoop集群搭建步骤
+##四. N节点Hadoop集群搭建步骤
 
-###1. 准备工作
+#####1. 准备工作
 - 参考第二部分1~3：下载镜像，修改tag，下载源代码
 - 注意，你可以不下载serf-dnsmasq, 但是请最好下载hadoop-base，因为hadoop-master是基于hadoop-base构建的
 
-###2. 重新构建hadoop-master镜像
+#####2. 重新构建hadoop-master镜像
 ```sh
 ./resize-cluster.sh 5
 ```
 - 不要担心，1分钟就能搞定
 - 你可以为resize-cluster.sh脚本设不同的正整数作为参数数1, 2, 3, 4, 5, 6...
 
-###3. 启动容器
+#####3. 启动容器
 ```sh
 ./start-container.sh 5
 ```
