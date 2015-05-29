@@ -1,6 +1,12 @@
-中文说明请拼命往下翻页...
+Quickly build arbitrary size Hadoop Cluster based on Docker
+------
+- Developer: KiwenLau
+- Email: kiwenlau@gmail.com
 
-[Blog](http://kiwenlau.blogspot.com/2015/05/quickly-build-arbitrary-size-hadoop.html) [GitHub](https://github.com/kiwenlau/hadoop-cluster-docker)
+>中文说明请拼命往下翻页...
+
+[Blog](http://kiwenlau.blogspot.com/2015/05/quickly-build-arbitrary-size-hadoop.html)
+[GitHub](https://github.com/kiwenlau/hadoop-cluster-docker)
 
 You can go to the section 3 directly and build a 3 nodes Hadoop cluster following the directions.
 
@@ -291,7 +297,8 @@ Hello    2
 - please test serf and dnsmasq service before start hadoop
 
 
-#English/中文
+基于Docker快速搭建多节点Hadopp集群
+-----
 
 
 可以直接进入第三部分，快速在本机搭建一个3个节点的Hadoop集群
