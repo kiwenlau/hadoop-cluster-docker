@@ -1,9 +1,8 @@
+>中文说明请拼命往下翻页...
 Quickly build arbitrary size Hadoop Cluster based on Docker
 ------
 - Developer: KiwenLau
 - Email: kiwenlau@gmail.com
-
->中文说明请拼命往下翻页...
 
 [Blog](http://kiwenlau.blogspot.com/2015/05/quickly-build-arbitrary-size-hadoop.html)
 [GitHub](https://github.com/kiwenlau/hadoop-cluster-docker)
