@@ -264,7 +264,7 @@ Hadoop    1
 Hello    2
 ```
 
-4. Steps to build arbitrary size Hadoop cluster
+##4. Steps to build arbitrary size Hadoop cluster
 
 #####a. Preparation
 
