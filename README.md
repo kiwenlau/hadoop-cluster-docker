@@ -1,4 +1,4 @@
->中文说明请拼命往下翻页...
+>中文说明请拼命往下翻页... sorry:(
 
 Quickly build arbitrary size Hadoop Cluster based on Docker
 ------
@@ -95,9 +95,14 @@ When containers start, the IP address of master node will passed to all slaves n
 - install vim：happy coding inside docker container:)
 - install Hadoop 2.3.0: install compiled hadoop （2.5.2， 2.6.0， 2.7.0 is bigger than 2.3.0)
 
-You can check my blog for compiling hadoop：
+You can check my blog for compiling hadoop：[Steps to compile 64-bit Hadoop 2.3.0 under Ubuntu 14.04](http://kiwenlau.blogspot.jp/2015/05/steps-to-compile-64-bit-hadoop-230.html)
 
-If you want to rebuild hadoop-base image, you need download the compiled hadoop, and put it inside hadoop-cluster-docker/hadoop-base/files directory. Following is the address to download compiled hadoop: [hadoop-2.3.0](http://pan.baidu.com/s/1sjFRaFz))
+If you want to rebuild hadoop-base image, you need download the compiled hadoop, and put it inside hadoop-cluster-docker/hadoop-base/files directory. Following is the address to download compiled hadoop: [hadoop-2.3.0](http://1drv.ms/1HZ1TSV)
+
+If you want to try other version of Hadoop, you can download these compiled hadoop.
+- [hadoop-2.5.2](http://1drv.ms/1AE1DJ2)
+- [hadoop-2.6.0](http://1drv.ms/1AE1CoC)
+- [hadoop-2.7.0](http://1drv.ms/1AE1DZN)
 
 #####hadoop-master
 
