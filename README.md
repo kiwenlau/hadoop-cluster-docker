@@ -132,13 +132,13 @@ Thus：
 
 following table shows the partial output of "docker history kiwenlau/hadoop-base:0.1.0"
 ```
-IMAGE            CREATED             CREATED BY                                                              SIZE
-2039b9b81146     44 hours ago        /bin/sh -c #(nop) ADD multi:a93c971a49514e787     158.5 MB
-cdb620312f30     44 hours ago        /bin/sh -c apt-get install -y openjdk-7-jdk                   324.6 MB
-da7d10c790c1     44 hours ago        /bin/sh -c apt-get install -y openssh-server                  87.58 MB
-c65cb568defc     44 hours ago        /bin/sh -c curl -Lso serf.zip https://dl.bint                    14.46 MB
-3e22b3d72e33     44 hours ago        /bin/sh -c apt-get update && apt-get install               60.89 MB
-b68f8c8d2140     3 weeks ago         /bin/sh -c #(nop) ADD file:d90f7467c470bfa9a3         131.3 MB
+IMAGE            CREATED             CREATED BY                                             SIZE
+2039b9b81146     44 hours ago        /bin/sh -c #(nop) ADD multi:a93c971a49514e787          158.5 MB
+cdb620312f30     44 hours ago        /bin/sh -c apt-get install -y openjdk-7-jdk            324.6 MB
+da7d10c790c1     44 hours ago        /bin/sh -c apt-get install -y openssh-server           87.58 MB
+c65cb568defc     44 hours ago        /bin/sh -c curl -Lso serf.zip https://dl.bint          14.46 MB
+3e22b3d72e33     44 hours ago        /bin/sh -c apt-get update && apt-get install           60.89 MB
+b68f8c8d2140     3 weeks ago         /bin/sh -c #(nop) ADD file:d90f7467c470bfa9a3          131.3 MB
 ```
 Thus:
 
