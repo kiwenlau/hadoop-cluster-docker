@@ -34,7 +34,7 @@ sequenceiq/ambari:latest:1.70        4.761GB
 
 alvinhenrick/hadoop-mutinode         4.331GB         too large, too slow to build images, not easy to add nodes, have some bugs
 ```
-My project is based on "alvinhenrick/hadoop-mutinode" project, however, I've reconstructed it for optimization. Following is the GitHub address and blog address of "alvinhenrick/hadoop-mutinode" project. GitHub, Blog
+My project is based on "alvinhenrick/hadoop-mutinode" project, however, I've reconstructed it for optimization. Following is the GitHub address and blog address of "alvinhenrick/hadoop-mutinode" project. [GitHub](https://github.com/alvinhenrick/hadoop-mutinode), [Blog](http://alvinhenrick.com/2014/07/16/hadoop-yarn-multinode-cluster-with-docker/)
 
 Following table shows the differences between my project "kiwenlau/hadoop-cluster-docker" and "alvinhenrick/hadoop-mutinode"
 ```
