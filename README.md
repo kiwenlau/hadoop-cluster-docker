@@ -14,14 +14,14 @@ You can go to the section 3 directly and build a 3 nodes Hadoop cluster followin
 1. Project Introduction
 2. Hadoop-Cluster-Docker image Introduction
 3. Steps to build a 3 nodes Hadoop Cluster
-4. Steps to build arbitrary size Hadoop Cluster
+4. Steps to build an arbitrary size Hadoop Cluster
 ```
 
 ##1. Project Introduction
 
-Building a Hadoop cluster using physical machines is very painful, especially for beginners. They will be frustrated by this problem before running wordcount. In addition, not everyone owns serveral physical machines. If your computer is good enough, you may try to build a Hadoop cluster using virtual machines.
+Building a Hadoop cluster using physical machines is very painful, especially for beginners. They will be frustrated by this problem before running wordcount. 
 
-My objective is to run Hadoop cluster based on Docker Containers, and help Hadoop developer to quickly build an arbitrary size Hadoop cluster on their local host. This idea already has several implementations, but in my view, they are not good enough. Their image size is too large, or they are very slow and they are not user friendly by using third party tools. Following table some some problems of existing Hadoop on Docker project.
+My objective is to run Hadoop cluster based on Docker, and help Hadoop developer to quickly build an arbitrary size Hadoop cluster on their local host. This idea already has several implementations, but in my view, they are not good enough. Their image size is too large, or they are very slow and they are not user friendly by using third party tools. Following table shows some problems of existing Hadoop on Docker projects.
 ```
 Project                              Image Size      Problem
 sequenceiq/hadoop-docker:latest      1.491GB         too large, only one node
@@ -36,7 +36,7 @@ alvinhenrick/hadoop-mutinode         4.331GB         too large, too slow to buil
 ```
 My project is based on "alvinhenrick/hadoop-mutinode" project, however, I've reconstructed it for optimization. Following is the GitHub address and blog address of "alvinhenrick/hadoop-mutinode" project. [GitHub](https://github.com/alvinhenrick/hadoop-mutinode), [Blog](http://alvinhenrick.com/2014/07/16/hadoop-yarn-multinode-cluster-with-docker/)
 
-Following table shows the differences between my project "kiwenlau/hadoop-cluster-docker" and "alvinhenrick/hadoop-mutinode"
+Following table shows the differences between my project "kiwenlau/hadoop-cluster-docker" and "alvinhenrick/hadoop-mutinode" project
 ```
 Image Name                    Build time      Layer number     Image Size
 alvinhenrick/serf             258.213s        21               239.4MB
@@ -60,7 +60,8 @@ In summary, I did following optimizations:
 #####Change node number quickly and conveniently
 
 For "alvinhenrick/hadoop-mutinode" project, If you want to change node number, you have to change hadoop configuration file (slaves, which list the domain name or ip address of all nodes ), rebuild hadoop-nn-dn image, change the shell sript for starting containers! As for my "kiwenlau/hadoop-cluster-docker" project, I write a shell script (resize-cluster.sh) to automate these steps. Then you can rebuild the hadoop-master image within one minutes and run an arbitrary size Hadoop Cluster quickly! The default node number of my project is 3 and you can change is to any size you like!
-In addition, building image, running container, starting Hadoop and run wordcount, all these jobs are automated by shell scripts. So you can use and develop this project more easily! Welcome to join this project
+
+In addition, building image, running container, starting Hadoop and run wordcount, all these jobs are automated by shell scripts. So you can use and develop this project more easily! Welcome to join this project.
 
 #####Develop environment
 
@@ -68,7 +69,7 @@ In addition, building image, running container, starting Hadoop and run wordcoun
 - kernel: 3.13.0-32-generic
 - Docke：1.5.0 and1.6.2
 
-#####Attention: old kernel version or small memory size will cause failure while running my project
+#####Attention: old kernel version will cause failure while running my project
 
 ##2. Hadoop-Cluster-Docker image Introduction
 
@@ -85,7 +86,7 @@ I developed 4 docker images in this project
 - install serf: serf is an distributed cluster membership management tool, which can recognize all nodes of the Hadoop cluster
 - install dnsmasq: dnsmasq is a lightweight dns server, which can provide domain name resolution service for the Hadoop Cluster
 
-When containers start, the IP address of master node will passed to all slaves node. Serf will start when the containers start. Serf agents on all slaves node will recognize the master node because they know the IP address of master node. Then the serf agent on master node will recognize all slave nodes. Serf agents on all nodes will communicate with each other, so everyone will know everyone after a while. When serf agent recognize new node, it will reconfigure the dnsmasq and restart it. Eventually, dnsmasq will be able to provide domain name resolution service for all nodes of the Hadoop Cluster. However, the setup jobs for serf and dnsmasq will cause more time when node number increases. Thus, when you want run more nodes, you have to verify whether serf agent have found all nodes and whether dnsmasq can resolve all nodes before you start hadoop. Using serf and dnsmasq to solve FQDN problem is proposed by SequenceIQ, which is startup company focusing on runing Hadoop on Docker. You can read this [slide](http://www.slideshare.net/JanosMatyas/docker-based-hadoop-provisioning) for more details.
+When containers start, the IP address of master node will passed to all slaves node. Serf will start when the containers start. Serf agents on all slaves node will recognize the master node because they know the IP address of master node. Then the serf agent on master node will recognize all slave nodes. Serf agents on all nodes will communicate with each other, so everyone will know everyone after a while. When serf agent recognize new node, it will reconfigure the dnsmasq and restart it. Eventually, dnsmasq will be able to provide domain name resolution service for all nodes of the Hadoop Cluster. However, the startup jobs for serf and dnsmasq will cause more time when node number increases. Thus, when you want run more nodes, you have to verify whether serf agent have found all nodes and whether dnsmasq can resolve all nodes before you start hadoop. Using serf and dnsmasq to solve FQDN problem is proposed by SequenceIQ, which is startup company focusing on runing Hadoop on Docker. You can read this [slide](http://www.slideshare.net/JanosMatyas/docker-based-hadoop-provisioning) for more details.
 
 #####hadoop-base 
 
@@ -163,11 +164,11 @@ sudo docker pull kiwenlau/hadoop-slave:0.1.0
 sudo docker pull kiwenlau/hadoop-base:0.1.0
 sudo docker pull kiwenlau/serf-dnsmasq:0.1.0
 ```
-check downloaded images
+*check downloaded images*
 ```
 sudo docker images
 ```
-output
+*output*
 ```
 REPOSITORY                TAG       IMAGE ID        CREATED         VIRTUAL SIZE
 kiwenlau/hadoop-slave     0.1.0     d63869855c03    17 hours ago    777.4 MB
@@ -187,7 +188,7 @@ git clone https://github.com/kiwenlau/hadoop-cluster-docker
  cd hadoop-cluster-docker
 ./start-container.sh
 ```
-output
+*output*
 ```
 start master container...
 start slave1 container...
@@ -196,11 +197,11 @@ root@master:~#
 ```
 - start 3 containers，1 master and 2 slaves
 - you will go to the /root directory of master container after start all containers
-list the files inside /root directory of master container
+*list the files inside /root directory of master container*
 ```
 ls
 ```
-output
+*output*
 ```
 hdfs  run-wordcount.sh    serf_log  start-hadoop.sh  start-ssh-serf.sh
 ```
@@ -209,25 +210,25 @@ hdfs  run-wordcount.sh    serf_log  start-hadoop.sh  start-ssh-serf.sh
 
 #####d. test serf and dnsmasq service
 
-In fact, you can skip this step and just wait for about 1 minute. Serf and dnsmasq need some time to start service.
+- In fact, you can skip this step and just wait for about 1 minute. Serf and dnsmasq need some time to start service.
 
-list all nodes of hadoop cluster
+*list all nodes of hadoop cluster*
 ```
 serf members
 ```
-output
+*output*
 ```
 master.kiwenlau.com  172.17.0.65:7946  alive  
 slave1.kiwenlau.com  172.17.0.66:7946  alive  
 slave2.kiwenlau.com  172.17.0.67:7946  alive
 ```
-you can wait for a while if any nodes don't show up since serf agent need time to recognize all nodes
+- you can wait for a while if any nodes don't show up since serf agent need time to recognize all nodes
 
-test ssh
+*test ssh*
 ```
 ssh slave2.kiwenlau.com
 ```
-output
+*output*
 ```
 Warning: Permanently added 'slave2.kiwenlau.com,172.17.0.67' (ECDSA) to the list of known hosts.
 Welcome to Ubuntu 15.04 (GNU/Linux 3.13.0-53-generic x86_64)
@@ -239,11 +240,11 @@ Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 root@slave2:~#
 ```
-exit slave2 nodes
+*exit slave2 nodes*
 ```
 exit
 ```
-output
+*output*
 ```
 logout
 Connection to slave2.kiwenlau.com closed.
@@ -261,7 +262,7 @@ Connection to slave2.kiwenlau.com closed.
 ```
 ./run-wordcount.sh
 ```
-output
+*output*
 ```
 input file1.txt:
 Hello Hadoop
