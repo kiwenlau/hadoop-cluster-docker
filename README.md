@@ -3,8 +3,8 @@
 Quickly build arbitrary size Hadoop Cluster based on Docker
 ------
 - Developer: KiwenLau
-- Email: kiwenlau@gmail.com
--[Blog](http://kiwenlau.blogspot.com/2015/05/quickly-build-arbitrary-size-hadoop.html)
+- Email: kiwenlau@gmail.com (feel free to contact me if you have any questions or ideas)
+- [Blog](http://kiwenlau.blogspot.com/2015/05/quickly-build-arbitrary-size-hadoop.html)
 [GitHub](https://github.com/kiwenlau/hadoop-cluster-docker)
 
 You can go to the section 3 directly and build a 3 nodes Hadoop cluster following the directions.
@@ -305,6 +305,9 @@ Hello    2
 基于Docker快速搭建多节点Hadopp集群
 -----
 
+- 开发者：KiwenLau
+- 邮箱：kiwenlau@163.com
+- [DockerOne](http://dockone.io/article/395), [Blogger](http://kiwenlau.blogspot.jp/2015/05/dockerhadoop_24.html), [博客园](http://www.cnblogs.com/kiwenlau/p/4524607.html)
 
 可以直接进入第三部分，快速在本机搭建一个3个节点的Hadoop集群
 ```
@@ -316,8 +319,6 @@ Hello    2
 
 
 ##一. 项目简介
-
-博客地址：[DockerOne](http://dockone.io/article/395), [Blogger](http://kiwenlau.blogspot.jp/2015/05/dockerhadoop_24.html), [博客园](http://www.cnblogs.com/kiwenlau/p/4524607.html)
 
 直接用机器搭建Hadoop集群是一个相当痛苦的过程，尤其对初学者来说。他们还没开始跑wordcount，可能就被这个问题折腾的体无完肤了....而且也不是每个人都有好几台机器对吧...你可以尝试用多个虚拟机搭建...前提是你有个性能杠杠的机器...
 
