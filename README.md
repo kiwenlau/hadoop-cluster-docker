@@ -4,8 +4,7 @@ Quickly build arbitrary size Hadoop Cluster based on Docker
 ------
 - Developer: KiwenLau
 - Email: kiwenlau@gmail.com
-
-[Blog](http://kiwenlau.blogspot.com/2015/05/quickly-build-arbitrary-size-hadoop.html)
+-[Blog](http://kiwenlau.blogspot.com/2015/05/quickly-build-arbitrary-size-hadoop.html)
 [GitHub](https://github.com/kiwenlau/hadoop-cluster-docker)
 
 You can go to the section 3 directly and build a 3 nodes Hadoop cluster following the directions.
