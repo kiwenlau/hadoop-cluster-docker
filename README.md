@@ -152,6 +152,10 @@ Thus:
 - installing hadoop costs 158.5MB
 - total size of ubuntu,openjdk and hadoop is 614.4MB
 
+Following picture shows the image architecture of my project.
+
+
+
 #####So, my hadoop image is near minimal size and it's hard to do more optimization
 
 ##3. steps to build a 3 nodes Hadoop cluster
