@@ -152,9 +152,8 @@ Thus:
 - installing hadoop costs 158.5MB
 - total size of ubuntu,openjdk and hadoop is 614.4MB
 
-Following picture shows the image architecture of my project.
-
-
+Following picture shows the image architecture of my project:
+![alt text](https://github.com/kiwenlau/hadoop-cluster-docker/raw/master/image architecture.jpg "Image Architecture")
 
 #####So, my hadoop image is near minimal size and it's hard to do more optimization
 
@@ -462,6 +461,9 @@ b68f8c8d2140    3 weeks ago         /bin/sh -c #(nop) ADD file:d90f7467c470bfa9a
 - 安装hadoop需要158.5MB
 - ubuntu,openjdk与hadoop均为镜像所必须，三者一共占了:614.4MB
 - 因此，我所开发的hadoop镜像以及接近最小，优化空间已经很小了
+
+下图显示了项目的Docker镜像结构：
+![alt text](https://github.com/kiwenlau/hadoop-cluster-docker/raw/master/image architecture.jpg "Image Architecture")
 
 
 ##三. 3节点Hadoop集群搭建步骤
