@@ -277,6 +277,7 @@ kiwenlau/hadoop-slave	     2.41s	      8	         775.4 MB
 基于hadoop-base镜像。配置Hadoop的slave节点。
 
 下图显示了项目的Docker镜像结构：
+
 ![alt text](https://github.com/kiwenlau/hadoop-cluster-docker/raw/master/image architecture.jpg "Image Architecture")
 
 
