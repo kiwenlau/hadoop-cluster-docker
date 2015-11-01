@@ -57,8 +57,6 @@ Based on hadoop-base. Configure the Hadoop slave node.
 Following picture shows the image architecture of my project:
 ![alt text](https://github.com/kiwenlau/hadoop-cluster-docker/raw/master/image architecture.jpg "Image Architecture")
 
-#####So, my hadoop image is near minimal size and it's hard to do more optimization
-
 ##3. steps to build a 3 nodes Hadoop cluster
 
 #####a. pull image
@@ -69,10 +67,13 @@ sudo docker pull kiwenlau/hadoop-base:0.1.0
 sudo docker pull kiwenlau/serf-dnsmasq:0.1.0
 ```
 *check downloaded images*
+
 ```
 sudo docker images
 ```
+
 *output*
+
 ```
 REPOSITORY                TAG       IMAGE ID        CREATED         VIRTUAL SIZE
 kiwenlau/hadoop-slave     0.1.0     d63869855c03    17 hours ago    777.4 MB
@@ -80,8 +81,7 @@ kiwenlau/hadoop-master    0.1.0     7c9d32ede450    17 hours ago    777.4 MB
 kiwenlau/hadoop-base      0.1.0     5571bd5de58e    17 hours ago    777.4 MB
 kiwenlau/serf-dnsmasq     0.1.0     09ed89c24ee8    17 hours ago    206.7 MB
 ```
-- hadoop-base is based on serf-dnsmasq，hadoop-slave and hadoop-master is based on hadoop-base
-- so the total size of all four images is only 777.4MB
+
 
 #####b. clone source code
 ```
@@ -92,7 +92,9 @@ git clone https://github.com/kiwenlau/hadoop-cluster-docker
  cd hadoop-cluster-docker
 ./start-container.sh
 ```
+
 *output*
+
 ```
 start master container...
 start slave1 container...
@@ -101,26 +103,31 @@ root@master:~#
 ```
 - start 3 containers，1 master and 2 slaves
 - you will go to the /root directory of master container after start all containers
+
 *list the files inside /root directory of master container*
+
 ```
 ls
 ```
+
 *output*
+
 ```
 hdfs  run-wordcount.sh    serf_log  start-hadoop.sh  start-ssh-serf.sh
 ```
-- start-hadoop.sh is the shell script to start hadoop
-- run-wordcount.sh is the shell script to run wordcount program
 
 #####d. test serf and dnsmasq service
 
 - In fact, you can skip this step and just wait for about 1 minute. Serf and dnsmasq need some time to start service.
 
 *list all nodes of hadoop cluster*
+
 ```
 serf members
 ```
+
 *output*
+
 ```
 master.kiwenlau.com  172.17.0.65:7946  alive  
 slave1.kiwenlau.com  172.17.0.66:7946  alive  
@@ -129,10 +136,13 @@ slave2.kiwenlau.com  172.17.0.67:7946  alive
 - you can wait for a while if any nodes don't show up since serf agent need time to recognize all nodes
 
 *test ssh*
+
 ```
 ssh slave2.kiwenlau.com
 ```
+
 *output*
+
 ```
 Warning: Permanently added 'slave2.kiwenlau.com,172.17.0.67' (ECDSA) to the list of known hosts.
 Welcome to Ubuntu 15.04 (GNU/Linux 3.13.0-53-generic x86_64)
@@ -144,11 +154,15 @@ Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 root@slave2:~#
 ```
+
 *exit slave2 nodes*
+
 ```
 exit
 ```
+
 *output*
+
 ```
 logout
 Connection to slave2.kiwenlau.com closed.
@@ -160,13 +174,15 @@ Connection to slave2.kiwenlau.com closed.
 ```
 ./start-hadoop.sh
 ```
-- you need to exit slave2 node after ssh to it...
+
 
 #####f. run wordcount
 ```
 ./run-wordcount.sh
 ```
+
 *output*
+
 ```
 input file1.txt:
 Hello Hadoop
@@ -185,20 +201,20 @@ Hello    2
 #####a. Preparation
 
 - check the steps a~b of section 3：pull images and clone source code
-- you don't have to pull serf-dnsmasq but you need to pull hadoop-base, since rebuiding hadoop-master is based on hadoop-base
 
 #####b. rebuild hadoop-master
+
 ```
 ./resize-cluster.sh 5
 ```
-- It only take 1 minutes
+
 - you can use any interger as the parameter for resize-cluster.sh: 1, 2, 3, 4, 5, 6...
+
 
 #####c. start container
 ```
 ./start-container.sh 5
 ```
-- you can use any interger as the parameter for start-container.sh: 1, 2, 3, 4, 5, 6...
 - you'd better use the same parameter as the step b
 
 #####d. run the Hadoop cluster 
@@ -210,11 +226,8 @@ Hello    2
 基于Docker快速搭建多节点Hadopp集群
 -----
 
-- 开发者：KiwenLau
-- 邮箱：kiwenlau@163.com
-- [DockerOne](http://dockone.io/article/395), [Blogger](http://kiwenlau.blogspot.jp/2015/05/dockerhadoop_24.html), [博客园](http://www.cnblogs.com/kiwenlau/p/4524607.html)
-
 可以直接进入第三部分，快速在本机搭建一个3个节点的Hadoop集群
+
 ```
 一. 项目简介
 二. 镜像简介
