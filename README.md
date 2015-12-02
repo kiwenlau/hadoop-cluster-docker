@@ -55,6 +55,7 @@ Based on hadoop-base. Configure the Hadoop master node.
 Based on hadoop-base. Configure the Hadoop slave node.
 
 Following picture shows the image architecture of my project:
+
 ![alt text](https://github.com/kiwenlau/hadoop-cluster-docker/raw/master/image architecture.jpg "Image Architecture")
 
 ##3. steps to build a 3 nodes Hadoop cluster
