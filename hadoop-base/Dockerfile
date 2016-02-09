@@ -3,6 +3,7 @@ FROM kiwenlau/serf-dnsmasq:0.1.0
 MAINTAINER KiwenLau <kiwenlau@gmail.com>
 
 # install openssh-server, vim and openjdk
+RUN apt-get update -y
 RUN apt-get install -y openssh-server vim
 RUN apt-get install -y openjdk-7-jdk 
 
