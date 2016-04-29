@@ -25,7 +25,7 @@ do
 	sudo docker rm -f slave$i &> /dev/null
 	echo "start slave$i container..."
 	sudo docker run -d -t --dns 127.0.0.1 -P --name slave$i -h slave$i.kiwenlau.com -e JOIN_IP=$FIRST_IP kiwenlau/hadoop-slave:0.1.0 &> /dev/null
-	((i++))
+	i=$(( $i + 1 ))
 done 
 
 
