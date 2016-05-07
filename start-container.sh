@@ -16,7 +16,7 @@ echo "start master container..."
 sudo docker run -d -t --dns 127.0.0.1 -P --name master -h master.kiwenlau.com -w /root kiwenlau/hadoop-master:0.1.0 &> /dev/null
 
 # get the IP address of master container
-FIRST_IP=$(docker inspect --format="{{.NetworkSettings.IPAddress}}" master)
+FIRST_IP=$(sudo docker inspect --format="{{.NetworkSettings.IPAddress}}" master)
 
 # delete old slave containers and start new slave containers
 i=1
