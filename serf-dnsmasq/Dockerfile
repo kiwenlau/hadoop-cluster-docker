@@ -10,7 +10,7 @@ apt-get install -y unzip curl dnsmasq
 ADD dnsmasq/* /etc/
 
 # install serf
-RUN curl -Lso serf.zip https://dl.bintray.com/mitchellh/serf/0.5.0_linux_amd64.zip && \
+RUN curl -Lso serf.zip https://releases.hashicorp.com/serf/0.7.0/serf_0.7.0_linux_amd64.zip && \
 unzip serf.zip -d /bin && \
 rm serf.zip
 
