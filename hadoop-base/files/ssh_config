@@ -4,6 +4,6 @@ Host localhost
 Host 0.0.0.0
   StrictHostKeyChecking no
   
-Host *.kiwenlau.com
+Host hadoop-*
    StrictHostKeyChecking no
    UserKnownHostsFile=/dev/null
