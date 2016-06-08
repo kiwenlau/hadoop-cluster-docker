@@ -21,4 +21,4 @@ do
 	i=$(( $i + 1 ))
 done 
 
-# sudo docker exec -it hadoop-master bash
+sudo docker exec -it hadoop-master bash
