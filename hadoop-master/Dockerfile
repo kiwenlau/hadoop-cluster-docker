@@ -23,6 +23,8 @@ RUN mv /tmp/hdfs-site.xml $HADOOP_INSTALL/etc/hadoop/hdfs-site.xml && \
 RUN chmod +x ~/start-hadoop.sh && \
     chmod +x ~/run-wordcount.sh && \
     chmod +x ~/start-ssh.sh && \
+    chmod +x $HADOOP_INSTALL/sbin/start-dfs.sh && \
+    chmod +x $HADOOP_INSTALL/sbin/start-yarn.sh && \
     chmod 1777 tmp
 
 # format namenode

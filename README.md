@@ -131,21 +131,21 @@ serf members
 
 ```
 master.kiwenlau.com  172.17.0.65:7946  alive  
-slave1.kiwenlau.com  172.17.0.66:7946  alive  
-slave2.kiwenlau.com  172.17.0.67:7946  alive
+hadoop-slave1  172.17.0.66:7946  alive  
+hadoop-slave2  172.17.0.67:7946  alive
 ```
 - you can wait for a while if any nodes don't show up since serf agent need time to recognize all nodes
 
 *test ssh*
 
 ```
-ssh slave2.kiwenlau.com
+ssh hadoop-slave2
 ```
 
 *output*
 
 ```
-Warning: Permanently added 'slave2.kiwenlau.com,172.17.0.67' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'hadoop-slave2,172.17.0.67' (ECDSA) to the list of known hosts.
 Welcome to Ubuntu 15.04 (GNU/Linux 3.13.0-53-generic x86_64)
  * Documentation:  https://help.ubuntu.com/
 The programs included with the Ubuntu system are free software;
@@ -166,7 +166,7 @@ exit
 
 ```
 logout
-Connection to slave2.kiwenlau.com closed.
+Connection to hadoop-slave2 closed.
 ```
 - Please wait for a whil if ssh fails, dnsmasq need time to configure domain name resolution service
 - You can start hadoop after these tests!

@@ -6,10 +6,10 @@
 # echo ""
 
 
-# echo -e "\nbuild docker hadoop-master image\n"
-# sudo docker build -f hadoop-master/Dockerfile -t kiwenlau/hadoop-master:1.0.0 ./hadoop-master
+echo -e "\nbuild docker hadoop-master image\n"
+sudo docker build -f hadoop-master/Dockerfile -t kiwenlau/hadoop-master:1.0.0 ./hadoop-master
 
-# echo ""
+echo ""
 
 echo -e "\nbuild docker hadoop-slave image\n"
 sudo docker build -f hadoop-slave/Dockerfile -t kiwenlau/hadoop-slave:1.0.0 ./hadoop-slave

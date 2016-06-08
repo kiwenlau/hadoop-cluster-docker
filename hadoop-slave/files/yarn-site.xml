@@ -10,14 +10,14 @@
 </property>
 <property>
   <name>yarn.resourcemanager.resource-tracker.address</name>
-  <value>master.kiwenlau.com:8025</value>
+  <value>hadoop-master:8025</value>
 </property>
 <property>
   <name>yarn.resourcemanager.scheduler.address</name>
-  <value>master.kiwenlau.com:8030</value>
+  <value>hadoop-master:8030</value>
 </property>
 <property>
   <name>yarn.resourcemanager.address</name>
-  <value>master.kiwenlau.com:8040</value>
+  <value>hadoop-master:8040</value>
 </property>
 </configuration>
