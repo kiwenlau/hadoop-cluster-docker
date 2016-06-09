@@ -6,7 +6,15 @@ N=${1:-3}
 # start hadoop master container
 sudo docker rm -f hadoop-master > /dev/null
 echo "start hadoop-master container..."
-sudo docker run -d -t -P --name hadoop-master -h hadoop-master -w /root --net=hadoop kiwenlau/hadoop-master:1.0.0 &> /dev/null
+sudo docker run -itd \
+                --net=hadoop \
+                -p 50070:50070 \
+                -p 8088:8088 \
+                -p 19888:19888 \
+                --name hadoop-master \
+                -h hadoop-master \
+                -w /root \
+                kiwenlau/hadoop-master:1.0.0 &> /dev/null
 
 # get the IP address of master container
 FIRST_IP=$(sudo docker inspect --format="{{.NetworkSettings.IPAddress}}" hadoop-master)
