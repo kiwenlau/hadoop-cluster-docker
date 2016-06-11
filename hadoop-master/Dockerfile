@@ -2,6 +2,8 @@ FROM kiwenlau/hadoop-base:1.0.0
 
 MAINTAINER KiwenLau <kiwenlau@gmail.com>
 
+WORKDIR /root
+
 # move all confugration files into container
 COPY files/* /tmp/
 
@@ -25,7 +27,7 @@ RUN chmod +x ~/start-hadoop.sh && \
     chmod +x ~/start-ssh.sh && \
     chmod +x $HADOOP_INSTALL/sbin/start-dfs.sh && \
     chmod +x $HADOOP_INSTALL/sbin/start-yarn.sh && \
-    chmod 1777 tmp
+    chmod 1777 /tmp
 
 # format namenode
 RUN /usr/local/hadoop/bin/hdfs namenode -format
