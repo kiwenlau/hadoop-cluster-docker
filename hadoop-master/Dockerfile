@@ -1,4 +1,4 @@
-FROM kiwenlau/hadoop-base:1.0.0
+FROM kiwenlau/hadoop-base:1.0
 
 MAINTAINER KiwenLau <kiwenlau@gmail.com>
 
