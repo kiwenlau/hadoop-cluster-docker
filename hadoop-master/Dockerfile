@@ -19,12 +19,10 @@ RUN mv /tmp/hdfs-site.xml $HADOOP_INSTALL/etc/hadoop/hdfs-site.xml && \
     mv /tmp/yarn-site.xml $HADOOP_INSTALL/etc/hadoop/yarn-site.xml && \
     mv /tmp/slaves $HADOOP_INSTALL/etc/hadoop/slaves && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
-    mv /tmp/run-wordcount.sh ~/run-wordcount.sh && \ 
-    mv /tmp/start-ssh.sh ~/start-ssh.sh
+    mv /tmp/run-wordcount.sh ~/run-wordcount.sh
 
 RUN chmod +x ~/start-hadoop.sh && \
     chmod +x ~/run-wordcount.sh && \
-    chmod +x ~/start-ssh.sh && \
     chmod +x $HADOOP_INSTALL/sbin/start-dfs.sh && \
     chmod +x $HADOOP_INSTALL/sbin/start-yarn.sh && \
     chmod 1777 /tmp
@@ -32,4 +30,4 @@ RUN chmod +x ~/start-hadoop.sh && \
 # format namenode
 RUN /usr/local/hadoop/bin/hdfs namenode -format
 
-CMD '/root/start-ssh.sh'; 'bash'
+CMD [ "sh", "-c", "service ssh start; bash"]
