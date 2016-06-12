@@ -44,4 +44,11 @@ RUN chmod +x ~/start-hadoop.sh && \
 # format namenode
 RUN /usr/local/hadoop/bin/hdfs namenode -format
 
+WORKDIR /root
+
+EXPOSE 8025 8030 8050 8040 8088 50070
+
 CMD [ "sh", "-c", "service ssh start; bash"]
+
+
+
