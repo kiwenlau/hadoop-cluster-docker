@@ -1,33 +1,28 @@
 #!/bin/bash
 
-tag="0.1.0"
-
-# N is the node number of the cluster
+# N is the node number of hadoop cluster
 N=$1
 
 if [ $# = 0 ]
 then
-	echo "Please use the node number of the cluster as the argument!"
+	echo "Please specify the node number of hadoop cluster!"
 	exit 1
 fi
 
-cd hadoop-master
-
-# change the slaves file
-echo "hadoop-master" > files/slaves
+# change slaves file
 i=1
+rm config/slaves
 while [ $i -lt $N ]
 do
-	echo "slave$i.kiwenlau.com" >> files/slaves
+	echo "hadoop-slave$i" >> config/slaves
 	((i++))
 done 
 
-# delete master container
-sudo docker rm -f master 
+echo ""
 
-# delete hadoop-master image
-sudo docker rmi kiwenlau/hadoop-master:$tag 
+echo -e "\nbuild docker hadoop image\n"
 
-# rebuild hadoop-master image
-pwd
-sudo docker build -t kiwenlau/hadoop-master:$tag .
+# rebuild kiwenlau/hadoop image
+sudo docker build -t kiwenlau/hadoop:1.0 .
+
+echo ""
