@@ -9,3 +9,4 @@ echo -e "\n"
 $HADOOP_INSTALL/sbin/start-yarn.sh
 
 echo -e "\n"
+
