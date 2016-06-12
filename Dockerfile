@@ -46,9 +46,7 @@ RUN /usr/local/hadoop/bin/hdfs namenode -format
 
 WORKDIR /root
 
-EXPOSE 8025 8030 8050 8040 8088 50070
+# EXPOSE 8030 8031 8032 8033 8040 8042 8060 8088 9000 50010 50020 50060 50070 50075 50090 50475
 
 CMD [ "sh", "-c", "service ssh start; bash"]
-
-
 

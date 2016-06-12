@@ -3,6 +3,5 @@
     <property>
         <name>fs.defaultFS</name>
         <value>hdfs://hadoop-master:9000/</value>
-        <description>NameNode URI</description>
     </property>
 </configuration>
