@@ -13,7 +13,7 @@ RUN wget https://github.com/kiwenlau/compile-hadoop/releases/download/2.7.2/hado
     mv hadoop-2.7.2 /usr/local/hadoop && \
     rm hadoop-2.7.2.tar.gz
 
-ENV HADOOP_INSTALL /usr/local/hadoop
+ENV HADOOP_HOME=/usr/local/hadoop PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin 
 
 # ssh without key
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
@@ -21,25 +21,25 @@ RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
 
 RUN mkdir -p ~/hdfs/namenode && \ 
     mkdir -p ~/hdfs/datanode && \
-    mkdir $HADOOP_INSTALL/logs
+    mkdir $HADOOP_HOME/logs
 
 COPY config/* /tmp/
 
 RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/.bashrc ~/.bashrc && \
     mv /tmp/hadoop-env.sh /usr/local/hadoop/etc/hadoop/hadoop-env.sh && \ 
-    mv /tmp/hdfs-site.xml $HADOOP_INSTALL/etc/hadoop/hdfs-site.xml && \ 
-    mv /tmp/core-site.xml $HADOOP_INSTALL/etc/hadoop/core-site.xml && \
-    mv /tmp/mapred-site.xml $HADOOP_INSTALL/etc/hadoop/mapred-site.xml && \
-    mv /tmp/yarn-site.xml $HADOOP_INSTALL/etc/hadoop/yarn-site.xml && \
-    mv /tmp/slaves $HADOOP_INSTALL/etc/hadoop/slaves && \
+    mv /tmp/hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \ 
+    mv /tmp/core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml && \
+    mv /tmp/mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
+    mv /tmp/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
+    mv /tmp/slaves $HADOOP_HOME/etc/hadoop/slaves && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
     mv /tmp/run-wordcount.sh ~/run-wordcount.sh
 
 RUN chmod +x ~/start-hadoop.sh && \
     chmod +x ~/run-wordcount.sh && \
-    chmod +x $HADOOP_INSTALL/sbin/start-dfs.sh && \
-    chmod +x $HADOOP_INSTALL/sbin/start-yarn.sh && \
+    chmod +x $HADOOP_HOME/sbin/start-dfs.sh && \
+    chmod +x $HADOOP_HOME/sbin/start-yarn.sh && \
     chmod 1777 /tmp
 
 # format namenode
