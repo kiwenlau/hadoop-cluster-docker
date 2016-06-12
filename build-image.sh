@@ -1,17 +1,22 @@
 #!/bin/bash
 
-echo -e "\nbuild docker hadoop-base image\n"
-sudo docker build -f hadoop-base/Dockerfile -t kiwenlau/hadoop-base:1.0 ./hadoop-base
+# echo -e "\nbuild docker hadoop-base image\n"
+# sudo docker build -f hadoop-base/Dockerfile -t kiwenlau/hadoop-base:1.0 ./hadoop-base
 
-echo ""
+# echo ""
 
 
-echo -e "\nbuild docker hadoop-master image\n"
-sudo docker build -f hadoop-master/Dockerfile -t kiwenlau/hadoop-master:1.0 ./hadoop-master
+# echo -e "\nbuild docker hadoop-master image\n"
+# sudo docker build -f hadoop-master/Dockerfile -t kiwenlau/hadoop-master:1.0 ./hadoop-master
 
-echo ""
+# echo ""
 
-echo -e "\nbuild docker hadoop-slave image\n"
-sudo docker build -f hadoop-slave/Dockerfile -t kiwenlau/hadoop-slave:1.0 ./hadoop-slave
+# echo -e "\nbuild docker hadoop-slave image\n"
+# sudo docker build -f hadoop-slave/Dockerfile -t kiwenlau/hadoop-slave:1.0 ./hadoop-slave
+
+# echo ""
+
+echo -e "\nbuild docker hadoop image\n"
+sudo docker build -t kiwenlau/hadoop:1.0 .
 
 echo ""
