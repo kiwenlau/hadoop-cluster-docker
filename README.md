@@ -1,8 +1,5 @@
 # Run Hadoop Custer within Docker Containers
 
-```
-sudo docker network create --driver=bridge hadoop
-```
 
 ##A. 3 Nodes Hadoop Cluster
 
@@ -18,7 +15,16 @@ sudo docker pull kiwenlau/hadoop:1.0
 git clone https://github.com/kiwenlau/hadoop-cluster-docker
 ```
 
-#####3. run container
+####3. create hadoop network
+
+```
+sudo docker network create --driver=bridge hadoop
+```
+
+#####4. start container
+
+
+
 ```
 cd hadoop-cluster-docker
 sudo ./start-container.sh
@@ -35,14 +41,14 @@ root@hadoop-master:~#
 - start 3 containers with 1 master and 2 slaves
 - you will get into the /root directory of hadoop-master container
 
-#####4. start hadoop
+#####5. start hadoop
 
 ```
 ./start-hadoop.sh
 ```
 
 
-#####5. run wordcount
+#####6. run wordcount
 
 ```
 ./run-wordcount.sh
@@ -67,7 +73,7 @@ Hello    2
 
 #####1. pull docker images and clone github repository
 
-do 4~5 like section A
+do 1~2 like section A
 
 #####2. rebuild docker image
 
@@ -87,5 +93,5 @@ do 4~5 like section A
 
 #####4. run hadoop cluster 
 
-do 4~5 like section A
+do 3~5 like section A
 
