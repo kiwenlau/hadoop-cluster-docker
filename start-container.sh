@@ -1,33 +1,34 @@
 #!/bin/bash
 
-# run N slave containers
-N=$1
+# the default node number is 3
+N=${1:-3}
 
-# the defaut node number is 3
-if [ $# = 0 ]
-then
-	N=3
-fi
-	
 
-# delete old master container and start new master container
-sudo docker rm -f master &> /dev/null
-echo "start master container..."
-sudo docker run -d -t --dns 127.0.0.1 -P --name master -h master.kiwenlau.com -w /root kiwenlau/hadoop-master:0.1.0 &> /dev/null
+# start hadoop master container
+sudo docker rm -f hadoop-master &> /dev/null
+echo "start hadoop-master container..."
+sudo docker run -itd \
+                --net=hadoop \
+                -p 50070:50070 \
+                -p 8088:8088 \
+                --name hadoop-master \
+                --hostname hadoop-master \
+                kiwenlau/hadoop:1.0 &> /dev/null
 
-# get the IP address of master container
-FIRST_IP=$(sudo docker inspect --format="{{.NetworkSettings.IPAddress}}" master)
 
-# delete old slave containers and start new slave containers
+# start hadoop slave container
 i=1
 while [ $i -lt $N ]
 do
-	sudo docker rm -f slave$i &> /dev/null
-	echo "start slave$i container..."
-	sudo docker run -d -t --dns 127.0.0.1 -P --name slave$i -h slave$i.kiwenlau.com -e JOIN_IP=$FIRST_IP kiwenlau/hadoop-slave:0.1.0 &> /dev/null
+	sudo docker rm -f hadoop-slave$i &> /dev/null
+	echo "start hadoop-slave$i container..."
+	sudo docker run -itd \
+	                --net=hadoop \
+	                --name hadoop-slave$i \
+	                --hostname hadoop-slave$i \
+	                kiwenlau/hadoop:1.0 &> /dev/null
 	i=$(( $i + 1 ))
 done 
 
-
-# create a new Bash session in the master container
-sudo docker exec -it master bash
+# get into hadoop master container
+sudo docker exec -it hadoop-master bash
