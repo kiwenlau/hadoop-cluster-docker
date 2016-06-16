@@ -1,7 +1,9 @@
-# Run Hadoop Custer within Docker Containers
+##Run Hadoop Custer within Docker Containers
+
+![alt tag](https://raw.githubusercontent.com/kiwenlau/hadoop-cluster-docker/master/hadoop-cluster-docker.png)
 
 
-##A. 3 Nodes Hadoop Cluster
+###3 Nodes Hadoop Cluster
 
 #####1. pull docker image
 
@@ -69,7 +71,7 @@ Hadoop    1
 Hello    2
 ```
 
-##B. Arbitrary size Hadoop cluster
+###Arbitrary size Hadoop cluster
 
 #####1. pull docker images and clone github repository
 
