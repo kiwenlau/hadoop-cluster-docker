@@ -1,5 +1,8 @@
 ##Run Hadoop Custer within Docker Containers
 
+博客: [基于Docker搭建Hadoop集群之升级版](http://kiwenlau.com/2016/06/12/160612-hadoop-cluster-docker-update/)
+
+
 ![alt tag](https://raw.githubusercontent.com/kiwenlau/hadoop-cluster-docker/master/hadoop-cluster-docker.png)
 
 
@@ -17,15 +20,13 @@ sudo docker pull kiwenlau/hadoop:1.0
 git clone https://github.com/kiwenlau/hadoop-cluster-docker
 ```
 
-####3. create hadoop network
+#####3. create hadoop network
 
 ```
 sudo docker network create --driver=bridge hadoop
 ```
 
 #####4. start container
-
-
 
 ```
 cd hadoop-cluster-docker
@@ -48,7 +49,6 @@ root@hadoop-master:~#
 ```
 ./start-hadoop.sh
 ```
-
 
 #####6. run wordcount
 
@@ -82,7 +82,6 @@ do 1~2 like section A
 ```
 ./resize-cluster.sh 5
 ```
-
 - specify parameter > 1: 2, 3..
 
 
