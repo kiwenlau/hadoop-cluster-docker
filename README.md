@@ -75,7 +75,7 @@ Hello    2
 
 #####1. pull docker images and clone github repository
 
-do 1~2 like section A
+do 1~3 like section A
 
 #####2. rebuild docker image
 
@@ -94,5 +94,5 @@ do 1~2 like section A
 
 #####4. run hadoop cluster 
 
-do 3~5 like section A
+do 5~6 like section A
 
