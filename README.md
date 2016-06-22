@@ -83,6 +83,7 @@ do 1~3 like section A
 ./resize-cluster.sh 5
 ```
 - specify parameter > 1: 2, 3..
+- this script just rebuild hadoop image with different **slaves** file, which pecifies the name of all slave nodes
 
 
 #####3. start container
