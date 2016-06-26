@@ -1,5 +1,6 @@
 ##Run Hadoop Custer within Docker Containers
 
+Blog: [Run Hadoop Cluster in Docker Update](http://kiwenlau.com/2016/06/26/hadoop-cluster-docker-update-english/)
 博客: [基于Docker搭建Hadoop集群之升级版](http://kiwenlau.com/2016/06/12/160612-hadoop-cluster-docker-update/)
 
 
@@ -80,7 +81,7 @@ do 1~3 like section A
 #####2. rebuild docker image
 
 ```
-./resize-cluster.sh 5
+sudo ./resize-cluster.sh 5
 ```
 - specify parameter > 1: 2, 3..
 - this script just rebuild hadoop image with different **slaves** file, which pecifies the name of all slave nodes
@@ -89,7 +90,7 @@ do 1~3 like section A
 #####3. start container
 
 ```
-./start-container.sh 5
+sudo ./start-container.sh 5
 ```
 - use the same parameter as the step 2
 
