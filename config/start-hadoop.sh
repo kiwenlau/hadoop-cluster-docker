@@ -9,4 +9,3 @@ echo -e "\n"
 $HADOOP_HOME/sbin/start-yarn.sh
 
 echo -e "\n"
-

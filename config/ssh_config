@@ -3,7 +3,7 @@ Host localhost
 
 Host 0.0.0.0
   StrictHostKeyChecking no
-  
-Host hadoop-*
+
+Host node*
    StrictHostKeyChecking no
    UserKnownHostsFile=/dev/null

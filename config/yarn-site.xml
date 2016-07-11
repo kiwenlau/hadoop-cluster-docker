@@ -10,6 +10,6 @@
     </property>
     <property>
         <name>yarn.resourcemanager.hostname</name>
-        <value>hadoop-master</value>
+        <value>node0</value>
     </property>
 </configuration>
