@@ -5,18 +5,26 @@ MAINTAINER KiwenLau <kiwenlau@gmail.com>
 WORKDIR /root
 
 # install openssh-server, openjdk and wget
-RUN apt-get update && apt-get install -y openssh-server openjdk-7-jdk wget
+RUN apt-get update && apt-get install -y openssh-server openjdk-7-jdk wget scala
 
 # install hadoop 2.7.2
-RUN wget https://github.com/kiwenlau/compile-hadoop/releases/download/2.7.2/hadoop-2.7.2.tar.gz && \
+RUN wget "https://github.com/kiwenlau/compile-hadoop/releases/download/2.7.2/hadoop-2.7.2.tar.gz" && \
     tar -xzvf hadoop-2.7.2.tar.gz && \
     mv hadoop-2.7.2 /usr/local/hadoop && \
     rm hadoop-2.7.2.tar.gz
 
+# install spark 1.6.2
+RUN wget "http://d3kbcqa49mib13.cloudfront.net/spark-1.6.2-bin-without-hadoop.tgz" && \
+    tar -xzvf spark-1.6.2-bin-without-hadoop.tgz && \
+    mv spark-1.6.2-bin-without-hadoop /usr/local/spark && \
+    rm spark-1.6.2-bin-without-hadoop.tgz
+
+
 # set environment variable
 ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64 
 ENV HADOOP_HOME=/usr/local/hadoop 
-ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin 
+ENV SPARK_HOME=/usr/local/spark
+ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$SPARK_HOME/sbin
 
 # ssh without key
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
@@ -34,11 +42,17 @@ RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml && \
     mv /tmp/mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
     mv /tmp/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
+    mv /tmp/spark-env.sh $SPARK_HOME/conf/spark-env.sh && \
+    cp /tmp/slaves ~/ && \
+    cp /tmp/slaves $SPARK_HOME/conf/slaves && \
     mv /tmp/slaves $HADOOP_HOME/etc/hadoop/slaves && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
-    mv /tmp/run-wordcount.sh ~/run-wordcount.sh
+    mv /tmp/start-spark.sh ~/start-spark.sh && \
+    mv /tmp/run-wordcount.sh ~/run-wordcount.sh && \
+    echo "export SPARK_CLASSPATH="$(hadoop classpath) >> $SPARK_HOME/conf/spark-env.sh
 
 RUN chmod +x ~/start-hadoop.sh && \
+    chmod +x ~/start-spark.sh && \
     chmod +x ~/run-wordcount.sh && \
     chmod +x $HADOOP_HOME/sbin/start-dfs.sh && \
     chmod +x $HADOOP_HOME/sbin/start-yarn.sh 
