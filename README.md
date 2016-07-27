@@ -1,4 +1,4 @@
-##Run Hadoop Custer within Docker Containers
+##Run Hadoop Cluster within Docker Containers
 
 - Blog: [Run Hadoop Cluster in Docker Update](http://kiwenlau.com/2016/06/26/hadoop-cluster-docker-update-english/)
 - 博客: [基于Docker搭建Hadoop集群之升级版](http://kiwenlau.com/2016/06/12/160612-hadoop-cluster-docker-update/)
