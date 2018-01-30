@@ -20,8 +20,14 @@ i=1
 while [ $i -lt $N ]
 do
 	echo "start hadoop-slave$i container..."
+	if [$i -eq 1] 
+	then
+		port=8041
+	else 
+		port=8042
+	fi
 	sudo docker run -itd \
-			-p 804$i:8042 \
+			-p $port:8042 \
 	                --net=hadoop \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
