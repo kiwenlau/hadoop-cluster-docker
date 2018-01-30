@@ -20,7 +20,7 @@ i=1
 while [ $i -lt $N ]
 do
 	echo "start hadoop-slave$i container..."
-	if [$i -eq 1] 
+	if [ $i -eq 1 ] 
 	then
 		port=8041
 	else 
