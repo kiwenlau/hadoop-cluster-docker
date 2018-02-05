@@ -34,6 +34,13 @@ cd hadoop-cluster-docker
 sudo ./start-container.sh
 ```
 
+
+If you want to keep the data from your previous launch
+
+```
+sudo ./start-container-preserved.sh
+```
+
 **output:**
 
 ```
