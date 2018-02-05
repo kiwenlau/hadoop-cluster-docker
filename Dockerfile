@@ -16,6 +16,7 @@ RUN wget https://github.com/kiwenlau/compile-hadoop/releases/download/2.7.2/hado
 # set environment variable
 ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64 
 ENV HADOOP_HOME=/usr/local/hadoop 
+ENV HADOOP_CLASSPATH=/usr/lib/jvm/java-7-openjdk-amd64/lib/tools.jar
 ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin 
 
 # ssh without key
