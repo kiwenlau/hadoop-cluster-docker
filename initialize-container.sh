@@ -22,9 +22,15 @@ while [ $i -lt $N ]
 do
 	sudo docker rm -f hadoop-slave$i &> /dev/null
 	echo "start hadoop-slave$i container..."
+	if [ $i -eq 1 ]
+	then
+		port=8041
+	else
+		port=8042
+	fi
 	sudo docker run -itd \
+			-p $port:8042 \
 	                --net=hadoop \
-			-p 804$i:8042 \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
 	                kiwenlau/hadoop:1.0 &> /dev/null
