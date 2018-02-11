@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Lilia Sfaxi
+MAINTAINER KiwenLau <kiwenlau@gmail.com> & Lilia Sfaxi <liliasfaxi@gmail.com>
 
 WORKDIR /root
 
@@ -17,6 +17,9 @@ RUN wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz && 
     tar -xvf spark-2.2.0-bin-hadoop2.7.tgz && \
     mv spark-2.2.0-bin-hadoop2.7 /usr/local/spark && \
     rm spark-2.2.0-bin-hadoop2.7.tgz
+
+RUN wget https://s3-eu-west-1.amazonaws.com/insat.lilia.bigdata.bucket/data/purchases.txt
+
 
 # set environment variable
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 
