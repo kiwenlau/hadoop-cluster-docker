@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo docker network create --driver=bridge hadoop
+
 # the default node number is 3
 N=${1:-3}
 
@@ -13,27 +15,23 @@ sudo docker run -itd \
                 -p 8088:8088 \
                 --name hadoop-master \
                 --hostname hadoop-master \
-                kiwenlau/hadoop:1.0 &> /dev/null
+                spark-hadoop:latest &> /dev/null
 
 
 # start hadoop slave container
 i=1
+port=8040
 while [ $i -lt $N ]
 do
 	sudo docker rm -f hadoop-slave$i &> /dev/null
 	echo "start hadoop-slave$i container..."
-	if [ $i -eq 1 ]
-	then
-		port=8041
-	else
-		port=8042
-	fi
+	port=$(( $port + $i ))
 	sudo docker run -itd \
 			-p $port:8042 \
 	                --net=hadoop \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
-	                kiwenlau/hadoop:1.0 &> /dev/null
+	                spark-hadoop:latest &> /dev/null
 	i=$(( $i + 1 ))
 done 
 
