@@ -13,6 +13,7 @@ sudo docker run -itd \
                 --net=hadoop \
                 -p 50070:50070 \
                 -p 8088:8088 \
+		-p 7077:7077 \
                 --name hadoop-master \
                 --hostname hadoop-master \
                 spark-hadoop:latest &> /dev/null
@@ -20,12 +21,11 @@ sudo docker run -itd \
 
 # start hadoop slave container
 i=1
-port=8040
 while [ $i -lt $N ]
 do
 	sudo docker rm -f hadoop-slave$i &> /dev/null
 	echo "start hadoop-slave$i container..."
-	port=$(( $port + $i ))
+	port=$(( 8040 + $i ))
 	sudo docker run -itd \
 			-p $port:8042 \
 	                --net=hadoop \
