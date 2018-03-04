@@ -13,11 +13,19 @@ RUN wget https://github.com/kiwenlau/compile-hadoop/releases/download/2.7.2/hado
     mv hadoop-2.7.2 /usr/local/hadoop && \
     rm hadoop-2.7.2.tar.gz
 
+# install spark
 RUN wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz && \
     tar -xvf spark-2.2.0-bin-hadoop2.7.tgz && \
     mv spark-2.2.0-bin-hadoop2.7 /usr/local/spark && \
     rm spark-2.2.0-bin-hadoop2.7.tgz
 
+# install kafka
+RUN wget http://www-us.apache.org/dist/kafka/1.0.0/kafka_2.11-1.0.0.tgz && \
+    tar -xzvf kafka_2.11-1.0.0.tgz && \
+    mv kafka_2.11-1.0.0 /usr/local/kafka && \
+    rm kafka_2.11-1.0.0.tgz
+
+# copy the test file
 RUN wget https://s3-eu-west-1.amazonaws.com/insat.lilia.bigdata.bucket/data/purchases.txt
 
 
@@ -25,9 +33,10 @@ RUN wget https://s3-eu-west-1.amazonaws.com/insat.lilia.bigdata.bucket/data/purc
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 
 ENV HADOOP_HOME=/usr/local/hadoop 
 ENV SPARK_HOME=/usr/local/spark
+ENV KAFKA_HOME=/usr/local/kafka
 ENV HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop
 ENV LD_LIBRARY_PATH=/usr/local/hadoop/lib/native:$LD_LIBRARY_PATH
-ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin:/usr/local/spark/bin 
+ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin:/usr/local/spark/bin:/usr/local/kafka/bin 
 
 # ssh without key
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
@@ -46,11 +55,13 @@ RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
     mv /tmp/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     mv /tmp/slaves $HADOOP_HOME/etc/hadoop/slaves && \
+    mv /tmp/start-kafka-zookeeper.sh ~/start-kafka-zookeeper.sh && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
     mv /tmp/run-wordcount.sh ~/run-wordcount.sh && \
-    mv /tmp/spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf
+    mv /tmp/spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf && \
      
 RUN chmod +x ~/start-hadoop.sh && \
+    chmod +x ~/start-kafka-zookeeper.sh && \
     chmod +x ~/run-wordcount.sh && \
     chmod +x $HADOOP_HOME/sbin/start-dfs.sh && \
     chmod +x $HADOOP_HOME/sbin/start-yarn.sh 
