@@ -58,7 +58,7 @@ RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/start-kafka-zookeeper.sh ~/start-kafka-zookeeper.sh && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
     mv /tmp/run-wordcount.sh ~/run-wordcount.sh && \
-    mv /tmp/spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf && \
+    mv /tmp/spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf
      
 RUN chmod +x ~/start-hadoop.sh && \
     chmod +x ~/start-kafka-zookeeper.sh && \
