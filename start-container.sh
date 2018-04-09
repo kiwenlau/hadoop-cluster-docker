@@ -14,6 +14,7 @@ sudo docker run -itd \
                 -p 50070:50070 \
                 -p 8088:8088 \
 		-p 7077:7077 \
+		-p 16010:16010 \
                 --name hadoop-master \
                 --hostname hadoop-master \
                 spark-hadoop:latest &> /dev/null
