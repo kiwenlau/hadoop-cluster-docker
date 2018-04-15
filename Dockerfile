@@ -26,10 +26,10 @@ RUN wget http://www-us.apache.org/dist/kafka/1.0.0/kafka_2.11-1.0.0.tgz && \
     rm kafka_2.11-1.0.0.tgz
 
 # install hbase
-RUN wget http://www-eu.apache.org/dist/hbase/1.4.3/hbase-1.4.3-bin.tar.gz && \
-    tar -zxvf hbase-1.4.3-bin.tar.gz && \
-    mv hbase-1.4.3 /usr/local/hbase && \
-    rm hbase-1.4.3-bin.tar.gz
+RUN wget http://www-eu.apache.org/dist/hbase/2.0.0-beta-2/hbase-2.0.0-beta-2-bin.tar.gz && \
+    tar -zxvf hbase-2.0.0-beta-2-bin.tar.gz && \
+    mv hbase-2.0.0-beta-2 /usr/local/hbase && \
+    rm hbase-2.0.0-beta-2-bin.tar.gz
 
 # copy the test files
 RUN wget https://s3-eu-west-1.amazonaws.com/insat.lilia.bigdata.bucket/data/purchases.txt && \
