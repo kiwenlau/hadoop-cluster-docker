@@ -9,7 +9,7 @@ sudo docker rm -f hadoop-master &> /dev/null
 echo "start hadoop-master container..."
 sudo docker run -itd \
                 --net=hadoop \
-		--privileged=true \
+                --privileged=true \
                 -p 50070:50070 \
                 -p 8088:8088 \
                 --name hadoop-master \
@@ -25,7 +25,7 @@ do
 	echo "start hadoop-slave$i container..."
 	sudo docker run -itd \
 	                --net=hadoop \
-			--privileged=true \
+	                --privileged=true \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
 	                kiwenlau/hadoop:1.0 &> /dev/null
