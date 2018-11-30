@@ -20,16 +20,16 @@ RUN wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz && 
     rm spark-2.2.0-bin-hadoop2.7.tgz
 
 # install kafka
-RUN wget http://www-us.apache.org/dist/kafka/1.0.0/kafka_2.11-1.0.0.tgz && \
-    tar -xzvf kafka_2.11-1.0.0.tgz && \
-    mv kafka_2.11-1.0.0 /usr/local/kafka && \
-    rm kafka_2.11-1.0.0.tgz
+RUN wget http://www-us.apache.org/dist/kafka/1.0.2/kafka_2.11-1.0.2.tgz && \
+    tar -xzvf kafka_2.11-1.0.2.tgz && \
+    mv kafka_2.11-1.0.2 /usr/local/kafka && \
+    rm kafka_2.11-1.0.2.tgz
 
 # install hbase
-RUN wget http://www-us.apache.org/dist/hbase/stable/hbase-1.4.7-bin.tar.gz && \
-    tar -zxvf hbase-1.4.7-bin.tar.gz && \
-    mv hbase-1.4.7 /usr/local/hbase && \
-    rm hbase-1.4.7-bin.tar.gz
+RUN wget http://www-us.apache.org/dist/hbase/stable/hbase-1.4.8-bin.tar.gz && \
+    tar -zxvf hbase-1.4.8-bin.tar.gz && \
+    mv hbase-1.4.8 /usr/local/hbase && \
+    rm hbase-1.4.8-bin.tar.gz
 
 # copy the test files
 RUN wget https://s3-eu-west-1.amazonaws.com/insat.lilia.bigdata.bucket/data/purchases.txt && \
