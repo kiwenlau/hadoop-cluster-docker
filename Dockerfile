@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER KiwenLau <kiwenlau@gmail.com> & Lilia Sfaxi <liliasfaxi@gmail.com>
+MAINTAINER Lilia Sfaxi <liliasfaxi@gmail.com>
 
 WORKDIR /root
 
