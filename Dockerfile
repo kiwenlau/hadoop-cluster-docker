@@ -20,13 +20,13 @@ RUN wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz && 
     rm spark-2.2.0-bin-hadoop2.7.tgz
 
 # install kafka
-RUN wget http://www-us.apache.org/dist/kafka/1.0.2/kafka_2.11-1.0.2.tgz && \
+RUN wget https://archive.apache.org/dist/kafka/1.0.2/kafka_2.11-1.0.2.tgz && \
     tar -xzvf kafka_2.11-1.0.2.tgz && \
     mv kafka_2.11-1.0.2 /usr/local/kafka && \
     rm kafka_2.11-1.0.2.tgz
 
 # install hbase
-RUN wget http://www-us.apache.org/dist/hbase/1.4.9/hbase-1.4.9-bin.tar.gz  && \ 
+RUN wget https://archive.apache.org/dist/hbase/1.4.9/hbase-1.4.9-bin.tar.gz  && \ 
     tar -zxvf hbase-1.4.9-bin.tar.gz && \
     mv hbase-1.4.9 /usr/local/hbase && \
     rm hbase-1.4.9-bin.tar.gz
