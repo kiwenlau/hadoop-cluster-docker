@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<configuration>
+    
+   <!-- MapReduce 框架：yarn/local -->
+    <property>
+      <name>mapreduce.framework.name</name>
+      <value>yarn</value>
+    </property>
+
+    <property>
+      <name>yarn.app.mapreduce.am.env</name>
+      <value>HADOOP_MAPRED_HOME=${HADOOP_HOME}</value>
+    </property>
+    <property>
+      <name>mapreduce.map.env</name>
+      <value>HADOOP_MAPRED_HOME=${HADOP_HOME}</value>
+    </property>
+    <property>
+      <name>mapreduce.reduce.env</name>
+      <value>HADOOP_MAPRED_HOME=${HADOOP_HOME}</value>
+    </property>
+    <property>
+        <name>mapreduce.application.classpath</name>
+        <value>
+            ${HADOOP_HOME}/etc/hadoop,
+            ${HADOOP_HOME}/share/hadoop/common/*,
+            ${HADOOP_HOME}/share/hadoop/common/lib/*,
+            ${HADOOP_HOME}/share/hadoop/hdfs/*,
+            ${HADOOP_HOME}/share/hadoop/hdfs/lib/*,
+            ${HADOOP_HOME}/share/hadoop/mapreduce/*,
+            ${HADOOP_HOME}/share/hadoop/mapreduce/lib/*,
+            ${HADOOP_HOME}/share/hadoop/yarn/*,
+            ${HADOOP_HOME}/share/hadoop/yarn/lib/*
+        </value>
+    </property>
+	
+</configuration>

@@ -9,12 +9,12 @@ then
 	exit 1
 fi
 
-# change slaves file
+# change workers file
 i=1
-rm config/slaves
+rm config/etc-hadoop/workers
 while [ $i -lt $N ]
 do
-	echo "hadoop-slave$i" >> config/slaves
+	echo "hadoop-worker$i" >> config/etc-hadoop/workers
 	((i++))
 done 
 
@@ -23,6 +23,6 @@ echo ""
 echo -e "\nbuild docker hadoop image\n"
 
 # rebuild kiwenlau/hadoop image
-sudo docker build -t kiwenlau/hadoop:1.0 .
+sudo docker build -t kiwenlau/hadoop:2.0 .
 
 echo ""

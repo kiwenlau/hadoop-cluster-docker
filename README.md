@@ -13,6 +13,8 @@
 
 ```
 sudo docker pull kiwenlau/hadoop:1.0
+# if you want hadoop 3.x, use  kiwenlau/hadoop:2.0
+# sudo docker pull kiwenlau/hadoop:2.0
 ```
 
 ##### 2. clone github repository

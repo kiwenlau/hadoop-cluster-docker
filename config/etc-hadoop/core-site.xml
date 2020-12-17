@@ -1,7 +1,13 @@
 <?xml version="1.0"?>
 <configuration>
-    <property>
+    
+	<property>
         <name>fs.defaultFS</name>
         <value>hdfs://hadoop-master:9000/</value>
     </property>
+	<property>
+        <name>hadoop.tmp.dir</name>
+        <value>/var/lib/hadoop/tmp</value>
+    </property>
+	
 </configuration>
