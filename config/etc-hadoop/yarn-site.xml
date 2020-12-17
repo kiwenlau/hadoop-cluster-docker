@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<configuration>
+
+	 <!-- ResourceManager 地址 -->
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>hadoop-master</value>
+    </property>
+    <!-- Reducer 获取数据的策略 -->
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+	<property>
+        <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+    <!-- TimelineServer 启用  https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/TimelineServer.html-->
+    <property>
+        <name>yarn.timeline-service.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.system-metrics-publisher.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.timeline-service.generic-application-history.enabled</name>
+        <value>true</value>
+    </property>
+    <!-- TimelineServer 存储目录 -->
+    <property>
+        <name>yarn.timeline-service.leveldb-timeline-store.path</name>
+        <value>/var/lib/hadoop/yarn/timeline</value>
+    </property>
+
+</configuration>

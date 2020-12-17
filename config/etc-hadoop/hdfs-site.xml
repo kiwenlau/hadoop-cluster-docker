@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<configuration>
+
+    <!-- HFDS 副本数 -->
+    <property>
+        <name>dfs.replication</name>
+        <value>2</value>
+    </property>
+    <!-- NameNode 存储目录 -->
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>/var/lib/hadoop/dfs/name</value>
+    </property>
+    <!-- DataNode 存储目录 -->
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>/var/lib/hadoop/dfs/data</value>
+    </property>
+
+</configuration>
