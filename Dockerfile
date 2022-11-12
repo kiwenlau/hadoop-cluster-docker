@@ -1,12 +1,14 @@
-FROM ubuntu:18.04
+FROM centos:centos7
 
-MAINTAINER KiwenLau <kiwenlau@gmail.com>
+MAINTAINER baoaya <baoaya@gmail.com>
 
 WORKDIR /root
 
-# install openssh-server, openjdk and wget
-RUN apt-get update && apt-get install -y openssh-server openjdk-8-jdk wget
 
+RUN yum -y update \
+      && yum install -y curl bash java-1.8.0-openjdk python3 py-pip nss libc6-compat wget \
+      && ln -s /lib64/ld-linux-x86-64.so.2 /lib/ld-linux-x86-64.so.2
+      
 # install hadoop 2.7.2
 RUN wget https://github.com/kiwenlau/compile-hadoop/releases/download/2.7.2/hadoop-2.7.2.tar.gz && \
     tar -xzvf hadoop-2.7.2.tar.gz && \
