@@ -2,7 +2,7 @@
 
 echo ""
 
-echo -e "\nbuild docker hadoop image\n"
-sudo docker build -t kiwenlau/hadoop:1.0 .
+echo -e "\nbuild docker hadoop & spark image\n"
+sudo docker build -t spark-hadoop:latest .
 
 echo ""

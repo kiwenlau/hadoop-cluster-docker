@@ -1,15 +1,28 @@
 <?xml version="1.0"?>
 <configuration>
-    <property>
-        <name>yarn.nodemanager.aux-services</name>
-        <value>mapreduce_shuffle</value>
-    </property>
-    <property>
-        <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
-        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
-    </property>
-    <property>
-        <name>yarn.resourcemanager.hostname</name>
-        <value>hadoop-master</value>
-    </property>
+	<property>
+	    <name>yarn.nodemanager.pmem-check-enabled</name>
+	    <value>false</value>
+	</property>
+
+	<property>
+	    <name>yarn.nodemanager.vmem-check-enabled</name>
+	    <value>false</value>
+	</property>
+    	<property>
+        	<name>yarn.nodemanager.aux-services</name>
+        	<value>mapreduce_shuffle</value>
+    	</property>
+    	<property>
+  	      	<name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+       		<value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    	</property>
+    	<property>
+        	<name>yarn.resourcemanager.hostname</name>
+        	<value>hadoop-master</value>
+    	</property>
+		<property>
+			<name>yarn.application.classpath</name>
+			<value>/usr/local/hadoop/etc/hadoop:/usr/local/hadoop/share/hadoop/common/lib/*:/usr/local/hadoop/share/hadoop/common/*:/usr/local/hadoop/share/hadoop/hdfs:/usr/local/hadoop/share/hadoop/hdfs/lib/*:/usr/local/hadoop/share/hadoop/hdfs/*:/usr/local/hadoop/share/hadoop/mapreduce/*:/usr/local/hadoop/share/hadoop/yarn:/usr/local/hadoop/share/hadoop/yarn/lib/*:/usr/local/hadoop/share/hadoop/yarn/*:/usr/local/hadoop/contrib/capacity-scheduler/*.jar</value>
+		</property>
 </configuration>

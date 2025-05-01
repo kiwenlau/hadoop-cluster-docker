@@ -1,0 +1,41 @@
+version: "3"
+networks:
+  default:
+    name: hadoop
+    driver: bridge
+services:
+  hadoop-master:
+    image: liliasfaxi/hadoop-cluster:latest
+    container_name: hadoop-master
+    hostname: hadoop-master
+    ports:
+    
+      - "9870:9870"   # NameNode WebUI
+      - "8088:8088"   # Viewing jobs infos and so on
+      - "7077:7077"   # Spark master port
+      - "16010:16010" # HBase Web UI
+      - "9092:9092"   # Kafka producer uses port 9092 to communicate with Kafka broker
+      - "2181:2181"   # Allow Kafka producer running on the host to connect to ZooKeeper running inside the container
+      - "9000:9000"   # HDFS port
+      - "9090:9090"   # to connect with REST service
+    networks:
+      - default
+
+  hadoop-worker1:
+    image: liliasfaxi/hadoop-cluster:latest
+    container_name: hadoop-worker1
+    hostname: hadoop-worker1
+    ports:
+      - "8040:8042"
+    networks:
+      - default
+
+  hadoop-worker2:
+    image: liliasfaxi/hadoop-cluster:latest
+    container_name: hadoop-worker2
+    hostname: hadoop-worker2
+    ports:
+      - "8041:8042"
+    networks:
+      - default
+
